@@ -14,34 +14,27 @@
 
 void    ScalarConverter::convert(std::string arg)
 {
-    convertToChar(arg);
-    convertToInt(arg);
+    if (isChar(arg))
+        convertChar(arg);
 }
 
-void    ScalarConverter::convertToChar(std::string arg)
+bool    ScalarConverter::isChar(std::string arg)
 {
-    std::cout << "char: ";
-    
     if (!isdigit(arg[0]) && isprint(arg[0]) && arg.size() == 1)
-    {
-        std::cout << "'" << arg[0] << "'" << std::endl;
-        return ;
-    }
-    if (ScalarConverter::checkPseudoLiterals(arg) || ScalarConverter::checkForString(arg))
-    {
-        std::cout << "impossible" << std::endl;
-        return ;
-    }
-    std::stringstream   convertToAscii;
-    int asciiVal;
+        return true;
+    return false;
+}
 
-    convertToAscii << arg;
-    convertToAscii >> asciiVal;
-    if (asciiVal >= 0 && asciiVal <= 127)
+void    ScalarConverter::convertChar(std::string arg)
+{
+    std::stringstream   stream;
+    int i;
+
+    stream << arg;
+    stream >> i;
+    if (i >= 0 && i <= 127)
     {
-        if (asciiVal >= 32 && asciiVal <= 126)
-            std::cout << "'" << static_cast<char>(asciiVal) << "'" << std::endl;
-        else
+        if (i < 32 || i > 126)
             std::cout << "Non displayable" << std::endl;
     }
     else
@@ -50,17 +43,16 @@ void    ScalarConverter::convertToChar(std::string arg)
 
 void    ScalarConverter::convertToInt(std::string arg)
 {
-    std::cout << "int: ";
     if (ScalarConverter::checkPseudoLiterals(arg) || ScalarConverter::checkForString(arg))
     {
         std::cout << "impossible" << std::endl;
         return ;
     }
-    std::stringstream convertToAscii;
-    int asciiVal;
+    std::stringstream stream;
+    int i;
     
-    convertToAscii << arg;
-    convertToAscii >> asciiVal;
+    stream << arg;
+    stream >> i;
     
 }
 

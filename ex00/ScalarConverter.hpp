@@ -38,7 +38,8 @@ class ScalarConverter
         ~ScalarConverter();                                         //  destructor
     public:
         static void convert(std::string arg);
-        static void convertToChar(std::string arg);
+        static bool isChar(std::string arg);
+        static void convertChar(std::string arg);
         static void convertToInt(std::string arg);
         static bool checkPseudoLiterals(std::string arg);
         static bool checkForString(std::string arg);
