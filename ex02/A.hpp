@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 11:28:33 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/30 14:16:13 by ddyankov         ###   ########.fr       */
+/*   Created: 2023/10/31 12:44:46 by ddyankov          #+#    #+#             */
+/*   Updated: 2023/10/31 12:57:12 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ScalarConverter.hpp"
+# ifndef A_HPP
+# define A_HPP
 
-int main(int ac, char **av)
-{
-    if (ac != 2)
-    {
-        std::cerr << RED << "Error\nThe Program accepts only 1 argument!" << RESET <<std::endl;
-        return (1);
-    }
-    try
-    {
-        ScalarConverter::convert(av[1]);
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    return 0;
-}
+# include "Base.hpp"
+
+class A : public Base
+{};
+
+# endif 
